@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/10 08:55:23 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/05 07:38:08 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/05 09:03:29 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/05 09:05:06 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = zombiehorde
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
@@ -20,7 +20,7 @@ INC_DIR = include
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRCS = main.cpp zombieHorde.cpp Zombie.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}

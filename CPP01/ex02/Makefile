@@ -5,29 +5,26 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/10 08:55:23 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/05 07:38:08 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/05 10:08:01 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/05 10:21:49 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
 
+NAME = thisisbrain
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-INC_DIR = include
-SRCS_DIR = srcs
+SRCS = main.cpp 
 OBJS_DIR = objs
-
-SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}
 
-${OBJS_DIR}/%.o: ${SRCS_DIR}/%.cpp
+${OBJS_DIR}/%.o:%.cpp
 	@mkdir -p ${@D}
-	${CC} ${CFLAGS} -I ${INC_DIR} -c $< -o $@
+	${CC} ${CFLAGS} -c $< -o $@
 
 ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o ${NAME}

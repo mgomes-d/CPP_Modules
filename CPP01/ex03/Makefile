@@ -5,22 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/10 08:55:23 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/05 07:38:08 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/05 10:28:35 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/05 11:57:05 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = zombie
+NAME = unnecessaryviolence
 
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
 
-INC_DIR = include
+INC_DIR = includes
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp newZombie.cpp randomChump.cpp Zombie.cpp
+SRCS = HumanA.cpp HumanB.cpp Weapon.cpp main.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}

@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/02 10:42:11 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/05 07:43:06 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/05 07:49:25 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/05 09:46:31 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,13 @@ Zombie::Zombie(std::string name) : _name(name)
 	std::cout << this->_name << " is created" << std::endl;
 	return ;
 }
+
+void	Zombie::naming(std::string name)
+{
+	this->_name = name;
+	return ;
+}
+
 Zombie::~Zombie(void)
 {
 	std::cout << "destructor's " << this->_name << " has been called" << std::endl;
