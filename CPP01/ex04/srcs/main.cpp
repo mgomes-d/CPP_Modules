@@ -5,29 +5,25 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 10:36:39 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/06 07:41:03 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/06 07:48:22 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/06 10:57:42 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "sed.hpp"
 
-int main()
+int	main(int ac, char **av)
 {
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+	if (ac != 4){
+		std::cout << "Error: Number of arguments" << std::endl;
+		return (1);
 	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
+	
+	File file(av[1], av[2], av[3]);
+
+	if (file.getContent()){
+		return (1);
 	}
-	return 0;
+	file.remplace();
+	return (0);
 }

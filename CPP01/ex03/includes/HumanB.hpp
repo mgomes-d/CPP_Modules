@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:31:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/05 11:59:28 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/06 07:37:20 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class HumanB
 	HumanB(std::string name, Weapon *weapon);
 	~HumanB();
 	void attack(void);
-	void setWeapon(Weapon weapon);
+	void setWeapon(Weapon &weapon);
 
 	private:
 	std::string _name;

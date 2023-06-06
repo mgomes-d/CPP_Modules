@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/05 10:32:25 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/05 11:51:26 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/05 12:09:54 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 HumanA::HumanA(std::string name, Weapon &weapon):_name(name), _weapon(weapon)
 {
-	std::cout << "constructor" << std::endl;
 	return ;
 }
 
 HumanA::~HumanA()
 {
-	std::cout << "destructor" << std::endl;
 	return ;
 }
 

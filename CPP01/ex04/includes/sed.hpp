@@ -1,33 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   sed.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/05 10:36:39 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/06 07:41:03 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/06 08:07:21 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/06 10:23:22 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#ifndef SED_HPP
+# define SED_HPP
 
-int main()
-{
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanA bob("Bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
-	}
-	{
-		Weapon club = Weapon("crude spiked club");
-		HumanB jim("Jim");
-		jim.setWeapon(club);
-		jim.attack();
-		club.setType("some other type of club");
-		jim.attack();
-	}
-	return 0;
-}
+#include <iostream>
+#include <fstream>
+
+class File{
+	public:
+	File(std::string filein, std::string s1, std::string s2);
+	~File();
+	void remplace(void);
+	int	 getContent(void);
+
+	private:
+	std::string _content;
+	std::string _filein;
+	std::string _s1;
+	std::string _s2;
+};
+
+#endif
