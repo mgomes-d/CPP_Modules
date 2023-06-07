@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 11:00:48 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/07 07:57:02 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/07 08:51:53 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/07 09:25:37 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#ifndef HARL_HPP
+# define HARL_HPP
 
-int	main(int ac, char **av)
-{
+#include <iostream>
 
-	if (ac != 2){
-		std::cout << "Wrong usage: ./harl2.0 <level>" << std::endl;
-		return (1);
-	}
+class Harl{
 	
-	Harl Harl;
-	std::string level = av[1];
-	Harl.complain(level);
-	return (0);
-}
+	public:
+		Harl(void);
+		~Harl(void);
+		void complain(std::string level);
+	private:
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
+};
+
+#endif

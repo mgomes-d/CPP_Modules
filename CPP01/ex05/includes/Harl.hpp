@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/06 11:00:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/06 11:12:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/07 08:59:09 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@
 class Harl{
 
 	public:
-	Harl();
-	~Harl();
-	void complain(std::string level);
+		Harl(void);
+		~Harl(void);
+		void complain(std::string level);
 
 	private:
-	void debug(void);
-	void info(void);
-	void warning(void);
-	void error(void);
+		void debug(void);
+		void info(void);
+		void warning(void);
+		void error(void);
 };
 
 #endif

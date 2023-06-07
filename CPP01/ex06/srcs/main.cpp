@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 11:00:48 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/07 07:57:02 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/07 08:51:37 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/07 09:01:17 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 
 	if (ac != 2){
-		std::cout << "Wrong usage: ./harl2.0 <level>" << std::endl;
+		std::cout << "Wrong usage: ./harlFilter <level>" << std::endl;
 		return (1);
 	}
 	

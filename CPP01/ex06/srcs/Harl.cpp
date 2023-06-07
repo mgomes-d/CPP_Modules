@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/06 11:00:47 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/07 08:56:51 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/07 08:51:21 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/07 10:08:36 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
+
 
 Harl::Harl(void)
 {
@@ -24,21 +25,32 @@ Harl::~Harl(void)
 
 void	Harl::complain(std::string level)
 {
-	std::string	options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
-	void (Harl::*functionPointer[4])(void) = {
-            &Harl::debug,
-            &Harl::info,
-            &Harl::warning,
-            &Harl::error
-		};
-	
-	for (int i = 0; i < 4; i++){
-		if (level.compare(options[i]) == 0){
-			(this->*functionPointer[i])();
-			break ;
-		}
-		
+	std::string options[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int i = 0;
+	while (i < 4 && level.compare(options[i])){
+		i++;
 	}
+	switch(i){
+		case 0:
+			std::cout << "[ DEBUG ]" << std::endl;
+			this->debug();
+			std::cout << std::endl;
+		case 1:
+			std::cout << "[ INFO ]" << std::endl;
+			this->info();
+			std::cout << std::endl;
+		case 2:
+			std::cout << "[ WARNING ]" << std::endl;
+			this->warning();
+			std::cout << std::endl;
+		case 3:
+			std::cout << "[ ERROR ]" << std::endl;
+			this->error();
+			break ;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+	}
+
 	return ;
 }
 
