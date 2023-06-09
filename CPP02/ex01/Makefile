@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/07 10:16:38 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/09 10:07:58 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/09 10:08:07 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/09 10:09:18 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = orthodoxcanonicalform
+NAME = numberclass
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf

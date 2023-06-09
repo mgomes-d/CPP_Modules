@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/07 10:16:18 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/09 08:03:47 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/09 10:09:54 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/09 11:11:25 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,20 @@ Fixed::Fixed(void) : _fixedPoint(0)
 	return ;
 }
 
+Fixed::Fixed(const int value)
+{
+	std::cout << "Int constructor called" << std::endl;
+	this->_fixedPoint = (value << Fixed::_bits);
+	return ;
+}
+
+Fixed::Fixed(const float value)
+{
+	std::cout << "Float constructor called" << std::endl;
+	this->_fixedPoint = roubdf(nb * (1 << Fixed::_bits));
+	return ;
+}
+
 Fixed::Fixed(const Fixed &rhs)
 {
 	std::cout << "Copy constructor called" << std::endl;
@@ -26,21 +40,15 @@ Fixed::Fixed(const Fixed &rhs)
 
 Fixed &Fixed::operator=(const Fixed& rhs)
 {
-	std::cout << "Copy assignment operator called" << std::endl;
+	std::cout << "Copy assignement operator called" << std::endl;
 	if (this != &rhs){
 		this->_fixedPoint = rhs.getRawBits();
 	}
 	return (*this);
 }
 
-Fixed::~Fixed(void) 
-{
-    std::cout << "Destructor called" << std::endl;
-}
-
 int	Fixed::getRawBits(void) const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_fixedPoint);
 }
 
@@ -48,4 +56,15 @@ void Fixed::setRawBits(int const raw)
 {
 	this->_fixedPoint = raw;
 	return ;
+}
+
+float Fixed::toFloat(void) const
+{
+	return ((float)this->_fixedPoint / (1 << Fixed::_bits));
+}
+
+std::ostream &operator<<(std::ostream &o, const Fixed &rhs)
+{
+	o << rhs.toFloat();
+	return (o);
 }
