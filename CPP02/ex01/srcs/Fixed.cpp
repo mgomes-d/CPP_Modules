@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/09 10:09:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/09 11:11:25 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/12 07:54:43 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(const int value)
 Fixed::Fixed(const float value)
 {
 	std::cout << "Float constructor called" << std::endl;
-	this->_fixedPoint = roubdf(nb * (1 << Fixed::_bits));
+	this->_fixedPoint = roundf(value * (1 << Fixed::_bits));
 	return ;
 }
 
@@ -36,6 +36,11 @@ Fixed::Fixed(const Fixed &rhs)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = rhs;
+}
+
+Fixed::~Fixed(void)
+{
+	std::cout << "Destructor called" << std::endl;
 }
 
 Fixed &Fixed::operator=(const Fixed& rhs)
@@ -61,6 +66,11 @@ void Fixed::setRawBits(int const raw)
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_fixedPoint / (1 << Fixed::_bits));
+}
+
+int	Fixed::toInt(void) const
+{
+	return (this->_fixedPoint >> Fixed::_bits);
 }
 
 std::ostream &operator<<(std::ostream &o, const Fixed &rhs)
