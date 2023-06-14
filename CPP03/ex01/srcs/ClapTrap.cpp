@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:10:40 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/13 11:10:41 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/14 09:23:09 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void ClapTrap::beRepaired(unsigned int amount)
 	return ;
 }
 
-bool ClapTrap::_haveHP(void)
+bool ClapTrap::_haveHP(void) const
 {
 	if (this->_HitPoints > 0){
 		return (true);
@@ -102,7 +102,7 @@ bool ClapTrap::_haveHP(void)
 	}
 }
 
-bool ClapTrap::_haveEnergy(void)
+bool ClapTrap::_haveEnergy(void) const
 {
 	if (this->_EnergyPoints > 0){
 		return (true);

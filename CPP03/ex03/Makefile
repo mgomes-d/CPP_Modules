@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/13 10:03:31 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/14 07:13:18 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/14 09:15:39 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/14 11:16:30 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = serena
+NAME = diamondtrap
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
@@ -19,7 +19,7 @@ INC_DIR = includes
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}

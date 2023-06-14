@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 07:12:19 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/13 09:24:55 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/14 09:23:46 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ private:
 	unsigned int _HitPoints;
 	unsigned int _EnergyPoints;
 	unsigned int _AttackDamage;
-	bool		_haveEnergy(void);
-	bool		_haveHP(void);
+	bool		_haveEnergy(void) const;
+	bool		_haveHP(void) const;
 };
 
 #endif
