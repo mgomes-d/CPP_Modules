@@ -6,10 +6,9 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:10:40 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/14 09:23:09 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/15 11:20:09 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ClapTrap.hpp"
 
@@ -34,6 +33,7 @@ ClapTrap::ClapTrap(const ClapTrap &rhs)
 
 ClapTrap &ClapTrap::operator=(const ClapTrap &rhs)
 {
+	std::cout << "ClapTrap " << rhs._Name << " has been copied" << std::endl;
 	if (this != &rhs)
 	{
 		this->_Name = rhs._Name;
@@ -57,7 +57,7 @@ void ClapTrap::attack(const std::string& target)
 		this->_EnergyPoints--;
 	}
 	else{
-		std::cout << "ClapTrap " << this->_Name << " cannot attack" << std::endl;
+		std::cout << "ClapTrap " << this->_Name << " cannot attack!" << std::endl;
 	}
 	return ;
 }
@@ -72,9 +72,9 @@ void ClapTrap::takeDamage(unsigned int amount)
 		else{
 			this->_HitPoints = 0;
 		}
-		if (!this->_haveHP()){
-			std::cout << "ClapTrap " << this->_Name << " has been death" << std::endl;
-		}
+	}
+	else{
+			std::cout << "ClapTrap " << this->_Name << " is death!" << std::endl;
 	}
 	return ;
 }
@@ -82,12 +82,12 @@ void ClapTrap::takeDamage(unsigned int amount)
 void ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->_haveEnergy() && this->_haveHP()){
-		std::cout << "ClapTrap " << this->_Name << " repairs itself " << amount << " HitPoints" << std::endl;
+		std::cout << "ClapTrap " << this->_Name << " repairs itself " << amount << " HitPoints!" << std::endl;
 		this->_HitPoints += amount;
 		this->_EnergyPoints--;
 	}
 	else{
-		std::cout << "ClapTrap " << this->_Name << " cannot repairs itself" << std::endl;
+		std::cout << "ClapTrap " << this->_Name << " cannot repairs itself!" << std::endl;
 	}
 	return ;
 }

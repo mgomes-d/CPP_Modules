@@ -6,13 +6,13 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/13 10:03:31 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/14 07:13:18 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/06/15 09:57:26 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = serena
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 RM = rm -rf
 
 INC_DIR = includes

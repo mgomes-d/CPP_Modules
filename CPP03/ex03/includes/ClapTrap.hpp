@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/13 11:10:27 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/14 09:24:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/15 10:42:39 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class ClapTrap{
 
 public:
 	ClapTrap(void);
-	ClapTrap(std::string name);
+	ClapTrap(const std::string &name);
 	ClapTrap(const ClapTrap &rhs);
 	ClapTrap &operator=(const ClapTrap &rhs);
 	~ClapTrap(void);

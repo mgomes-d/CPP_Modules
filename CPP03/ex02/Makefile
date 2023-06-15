@@ -6,13 +6,13 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 09:15:39 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/14 11:10:17 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/06/15 09:57:30 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fragtrap
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -Wshadow -Wno-shadow
 RM = rm -rf
 
 INC_DIR = includes
