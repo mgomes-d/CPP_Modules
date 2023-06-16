@@ -5,12 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/06/14 09:15:39 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/16 11:48:35 by mgomes-d         ###   ########.fr        #
+#    Created: 2023/06/16 11:48:04 by mgomes-d          #+#    #+#              #
+#    Updated: 2023/06/16 11:51:31 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = diamondtrap
+NAME = polymorphisme
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 RM = rm -rf
@@ -19,7 +19,7 @@ INC_DIR = includes
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp FragTrap.cpp DiamondTrap.cpp
+SRCS = main.cpp Animal.hpp Animal.cpp Cat.cpp Cat.hpp Dog.cpp Dog.hpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}

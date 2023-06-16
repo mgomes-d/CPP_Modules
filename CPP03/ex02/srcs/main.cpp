@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 07:13:23 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/14 11:14:15 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/16 07:46:12 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,37 @@
 
 int main(void)
 {
-    ClapTrap clapTrap1("Cortiz");
-    ClapTrap clapTrap2("Fluchten");
+	FragTrap cortiz("Cortiz");
+	FragTrap francois("francois");
+	FragTrap marwane("Marwane");
 
-    clapTrap1.attack("Mf");
-	clapTrap1.attack("lr");
-	clapTrap1.attack("ro");
-	clapTrap2.attack("ll");
+	std::cout << std::endl;
+	std::cout << "\033[1;36m" << "[ ATTACK ]" << "\033[0m" << std::endl;
+	cortiz.attack("francois");
+	cortiz.attack("Marwane");
+	std::cout << std::endl;
 
-    clapTrap1.takeDamage(5);
-    clapTrap2.takeDamage(10);
+	std::cout << "\033[1;31m" << "[ TAKE DAMAGE ]" << "\033[0m" << std::endl;
+	francois.takeDamage(85);
+	francois.takeDamage(15);
+	francois.takeDamage(1);
+	francois.takeDamage(2);
+	francois.takeDamage(3);
+	marwane.takeDamage(25);
+	std::cout << std::endl;
 
-    clapTrap1.beRepaired(3);
-    clapTrap2.beRepaired(2);
+	std::cout << "\033[1;32m" << "[ BE REPAIRED ]" << "\033[0m" << std::endl;
+	cortiz.beRepaired(3);
+	francois.beRepaired(8);
+	marwane.beRepaired(2);
+	marwane.beRepaired(5);
+	std::cout << std::endl;
 
-    ScavTrap scavtrap1("fluchten");
-    for (int i = 0; i < 25; i++){
-        scavtrap1.attack("mgomes");
-    }
-    scavtrap1.takeDamage(150);
-    scavtrap1.attack("fe");
-    scavtrap1.guardGate();
+	std::cout << "\033[1;34m" << "[ HIGH FIVES GUYS ]" << "\033[0m" << std::endl;
+	cortiz.highFivesGuys();
+	francois.highFivesGuys();
+	marwane.highFivesGuys();
+	std::cout << std::endl;
 
-    FragTrap hello("hello");
-    hello.highFivesGuys();
-    
     return (0);
 }
