@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   AMateria.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 11:50:55 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/19 11:29:08 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/20 11:44:49 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/20 11:48:45 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef AMATERIA_HPP
+# define AMATERIA_HPP
 
-#include "Animal.hpp"
+Class AMateria{
 
-class Cat : public Animal{
-
+protected:
+	std::string _type;
 public:
-	Cat(void);
-	Cat(const Cat &rhs);
-	Cat &operator=(const Cat &rhs);
-	~Cat(void);
-
-	virtual void makeSound(void) const;
-private:
+	AMateria(void);
+	AMateria(std::string const &type);
+	AMateria(const AMateria &rhs);
+	AMateria &operator=(const AMateria &rhs);
+	~AMateria(void);
 	
+	std::string const & getType() const;
+	virtual AMateria* clone() const = 0;
+	virtual void use(ICharacter& target);
 };
 
 #endif

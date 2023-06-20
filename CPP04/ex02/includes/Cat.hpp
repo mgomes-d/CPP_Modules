@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:50:55 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/19 11:29:08 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/20 09:37:29 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CAT_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
 class Cat : public Animal{
 
@@ -25,7 +26,8 @@ public:
 
 	virtual void makeSound(void) const;
 private:
-	
+	Brain *_bigbrain;
+
 };
 
 #endif

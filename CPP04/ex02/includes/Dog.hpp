@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/16 11:50:55 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/19 11:29:08 by mgomes-d         ###   ########.fr       */
+/*   Created: 2023/06/16 11:50:59 by mgomes-d          #+#    #+#             */
+/*   Updated: 2023/06/20 09:35:22 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CAT_HPP
-# define CAT_HPP
+#ifndef DOG_HPP
+# define DOG_HPP
 
 #include "Animal.hpp"
+#include "Brain.hpp"
 
-class Cat : public Animal{
-
+class Dog : public Animal{
+	
 public:
-	Cat(void);
-	Cat(const Cat &rhs);
-	Cat &operator=(const Cat &rhs);
-	~Cat(void);
+	Dog(void);
+	Dog(const Dog &rhs);
+	Dog &operator=(const Dog &rhs);
+	~Dog(void);
 
 	virtual void makeSound(void) const;
 private:
-	
+	Brain *_bigbrain;
+
 };
 
 #endif

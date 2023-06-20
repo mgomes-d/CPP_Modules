@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:16:55 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 08:18:36 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/20 10:33:59 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,43 @@ void Test(void)
 	delete b;
 }
 
+void Test02(void)
+{
+	Animal *array[20];
+	std::cout << "\033[1;32mConstructor \033[0m" << std::endl;
+	for (int i = 0; i < 20; i++){
+		if (i % 2 == 0){
+			array[i] = new Dog();
+		}
+		else{
+			array[i] = new Cat();
+		}
+	}
+	std::cout << std::endl;
+	
+	std::cout << "\033[1;36m Sound Test \033[0m" << std::endl;
+	for(int i = 0; i < 20; i++){
+		std::cout << array[i]->getType() << ": ";
+		array[i]->makeSound();
+	}
+
+	std::cout << std::endl;
+	std::cout << "\033[1;33mDestructor \033[0m" << std::endl;
+
+	for (int i = 0; i < 20; i++){
+		delete array[i];
+	}
+}
+
 int	main(void)
 {
-	std::cout << "\033[4;41m Test \033[0m" << std::endl;
+	std::cout << "\033[4;41m Test From ex00 \033[0m" << std::endl;
 	Test();
 
 	std::cout << std::endl;
+	
+	std::cout << "\033[4;41m NewTest \033[0m" << std::endl;
+	Test02();
+
 	return (0);
 }

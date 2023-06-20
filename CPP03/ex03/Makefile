@@ -6,13 +6,14 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/14 09:15:39 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/16 11:48:35 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/06/20 09:17:25 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = diamondtrap
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
+
 RM = rm -rf
 
 INC_DIR = includes
