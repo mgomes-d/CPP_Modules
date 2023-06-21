@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/14 07:13:23 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/15 08:26:28 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/21 07:41:48 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,14 @@ int main(void)
 	ScavTrap marwane("Marwane");
 
 	std::cout << std::endl;
-	std::cout << "\033[1;36m" << "[ ATTACK ]" << "\033[0m" << std::endl;
+    std::cout << "\033[1;30m" << " Test 1 ~ ATTACK ~ " << "\033[0m" << std::endl;
 	cortiz.attack("Murillo");
 	cortiz.attack("Marwane");
+	marwane.attack("Cortiz");
+	marwane.attack("Monster");
 	std::cout << std::endl;
 
-	std::cout << "\033[1;31m" << "[ TAKE DAMAGE ]" << "\033[0m" << std::endl;
+    std::cout << "\033[1;31m" << " Test 2 ~ TAKE DAMAGE ~ " << "\033[0m" << std::endl;
 	murillo.takeDamage(85);
 	murillo.takeDamage(15);
 	murillo.takeDamage(1);
@@ -33,14 +35,14 @@ int main(void)
 	marwane.takeDamage(25);
 	std::cout << std::endl;
 
-	std::cout << "\033[1;32m" << "[ BE REPAIRED ]" << "\033[0m" << std::endl;
+    std::cout << "\033[1;32m" << "Test 3 ~ BE REPAIRED ~ " << "\033[0m" << std::endl;
 	cortiz.beRepaired(3);
 	murillo.beRepaired(8);
 	marwane.beRepaired(2);
 	marwane.beRepaired(5);
 	std::cout << std::endl;
 
-	std::cout << "\033[1;34m" << "[ GUARD GATE ]" << "\033[0m" << std::endl;
+    std::cout << "\033[1;36m" << "Test 4 ~ GUARD GATE ~ " << "\033[0m" << std::endl;
 	cortiz.guardGate();
 	murillo.guardGate();
 	marwane.guardGate();
