@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 08:57:45 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/21 09:56:06 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 08:06:00 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 #include "ICharacter.hpp"
 
-class Ice : public AMateria{
-	
-public:
-	Ice(void);
-	Ice(const Ice &rhs);
-	Ice &operator=(const Ice &rhs);
-	~Ice(void);
+class Ice : public AMateria
+{
+	public:
+		Ice(void);
+		Ice(const Ice &rhs);
+		Ice &operator=(const Ice &rhs);
+		~Ice(void);
 
-	virtual AMateria *clone(void) const;
-	virtual void use(ICharacter &target);
+		virtual AMateria *clone(void) const;
+		virtual void use(ICharacter &target);
 };
 
 #endif

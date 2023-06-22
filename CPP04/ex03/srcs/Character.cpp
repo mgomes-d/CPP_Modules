@@ -6,59 +6,67 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 10:27:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/21 12:23:57 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:45:40 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
 
 
-Character::Character(void) : _Name("Default")
+Character::Character(void) : _Name("Default"), _floorIndex(0)
 {
-	std::cout << "Default Character constructor" << std::endl;
 	for (int i = 0; i < 4; i++){
 		this->_inventory[i] = NULL;
 	}
-	this->_floor[0] = NULL;
-	this->_floorIndex = 0;
+	for (int i = 0; i < MAX_FLOOR_SIZE; i++){
+		this->_floor[i] = NULL;
+	}
 }
 
-Character::Character(const std::string &name) : _Name(name)
+Character::Character(const std::string &name) : _Name(name), _floorIndex(0)
 {
-	std::cout << "Naming Character constructor" << std::endl;
 	for (int i = 0; i < 4; i++){
 		this->_inventory[i] = NULL;
 	}
-	this->_floor[0] = NULL;
-	this->_floorIndex = 0;
+	for (int i = 0; i < MAX_FLOOR_SIZE; i++){
+		this->_floor[i] = NULL;
+	}
 }
 
 Character::Character(const Character &rhs)
 {
-	std::cout << "Copy Character constructor" << std::endl;
 	*this = rhs;
 }
 
 Character &Character::operator=(const Character &rhs)
 {
-	std::cout << " Copy assignement Character" << std::endl;
 	if (this != &rhs){
 		this->_Name = rhs._Name;
+		for (int i = 0; i < 4; i++){
+			if (rhs._inventory[i]){
+				this->_inventory[i] = rhs._inventory[i]->clone();
+			}
+			else{
+				this->_inventory[i] = NULL;
+			}
+		}
 	}
 	return (*this);
 }
 
 Character::~Character(void)
 {
-	std::cout << "Default Character destructor" << std::endl;
+	for (int i = 0; i < 4; i++){
+		if (this->_inventory[i] != NULL){
+			delete this->_inventory[i];
+		}
+	}
     for (int i = 0; i < this->_floorIndex; i++) {
         if (this->_floor[i] != NULL) {
             delete this->_floor[i];
             this->_floor[i] = NULL;
         }
     }
-    delete[] this->_floor;
-    this->_floor = NULL;
 }
 
 std::string const &Character::getName(void) const
@@ -74,25 +82,30 @@ void Character::equip(AMateria *m)
 		i++;
 	}
 	if (i == 4){
-		std::cout << "inventory is full" << std::endl;
+		std::cout << "inventory is full!" << std::endl;
+		return ;
 	}
 	this->_inventory[i] = m;
-	std::cout << m->getType() << " has been equiped at " << i << "slot" << std::endl;
 }
 
 void Character::unequip(int idx)
 {
-	if (!this->_inventory[idx]){
-		std::cout << "There noting for unequip" << std::endl;
+	if (idx > 3 || idx < 0 || !this->_inventory[idx]){
+		std::cout << "Nothing to unequip!" << std::endl;
+		return ;
 	}
-	this->_floor[_floorIndex++] = this->_inventory[idx];
+	this->_floor[this->_floorIndex] = this->_inventory[idx];
+	this->_floorIndex++;
+	std::cout << "The Character " << this->_Name << " unequip " << this->_inventory[idx]->getType() << std::endl;
 	this->_inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
-	if (idx >= 4 || idx < 0){
-		return ;
+	if (idx <= 3 && idx >= 0 && this->_inventory[idx]){
+		this->_inventory[idx]->use(target);
 	}
-	this->_inventory[idx]->use(target);
+	else{
+		std::cout << "Nothing to use!" << std::endl;
+	}
 }
