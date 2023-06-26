@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 10:46:51 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 07:55:31 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:57:42 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define WRONGCAT_HPP
 
 #include "WrongAnimal.hpp"
+#include <iostream>
 
 class WrongCat : public WrongAnimal{
 

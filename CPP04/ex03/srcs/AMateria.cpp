@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 11:45:19 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 08:58:27 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/23 10:16:32 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ AMateria::AMateria(void)
 	
 }
 
-AMateria::AMateria(std::string const &type) : _type(type)
+AMateria::AMateria(std::string const &type)
 {
-	
+	this->_type = type;
 }
 
 AMateria::AMateria(const AMateria &rhs)
@@ -29,9 +29,7 @@ AMateria::AMateria(const AMateria &rhs)
 
 AMateria &AMateria::operator=(const AMateria &rhs)
 {
-	if (this != &rhs){
-		this->_type = rhs._type;
-	}
+	(void)rhs;
 	return (*this);
 }
 

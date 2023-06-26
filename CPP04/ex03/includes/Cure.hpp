@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/22 08:15:52 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 08:16:28 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:56:47 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CURE_HPP
 
 #include "ICharacter.hpp"
+#include <iostream>
 
 class Cure : public AMateria
 {

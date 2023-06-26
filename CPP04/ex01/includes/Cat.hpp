@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:50:55 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 09:37:29 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:57:19 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include "Animal.hpp"
 #include "Brain.hpp"
+#include <iostream>
 
 class Cat : public Animal{
 

@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:50:59 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/19 11:29:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:57:37 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define DOG_HPP
 
 #include "Animal.hpp"
+#include <iostream>
 
 class Dog : public Animal{
 	

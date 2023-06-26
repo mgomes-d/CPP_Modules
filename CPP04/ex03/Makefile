@@ -6,13 +6,13 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/20 11:44:12 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/22 09:45:09 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/06/23 10:10:03 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = interface
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 
 RM = rm -rf
 
 INC_DIR = includes

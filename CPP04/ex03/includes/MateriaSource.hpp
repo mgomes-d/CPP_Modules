@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:27:59 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 08:06:50 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/23 08:04:01 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define IMateriaSource_HPP
 
 #include "IMateriaSource.hpp"
+#include <iostream>
 
 class IMateriaSource;
 class AMateria;

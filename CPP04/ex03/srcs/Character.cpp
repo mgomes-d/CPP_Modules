@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 10:27:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 11:45:40 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/23 09:45:01 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,21 @@ Character &Character::operator=(const Character &rhs)
 {
 	if (this != &rhs){
 		this->_Name = rhs._Name;
+		this->_floorIndex = rhs._floorIndex;
 		for (int i = 0; i < 4; i++){
 			if (rhs._inventory[i]){
 				this->_inventory[i] = rhs._inventory[i]->clone();
 			}
 			else{
 				this->_inventory[i] = NULL;
+			}
+		}
+		for (int i = 0; i < MAX_FLOOR_SIZE; i++){
+			if (rhs._floor[i]){
+				this->_floor[i] = rhs._floor[i]->clone();
+			}
+			else{
+				this->_floor[i] = NULL;
 			}
 		}
 	}
@@ -93,6 +102,14 @@ void Character::unequip(int idx)
 	if (idx > 3 || idx < 0 || !this->_inventory[idx]){
 		std::cout << "Nothing to unequip!" << std::endl;
 		return ;
+	}
+	if (this->_floorIndex == MAX_FLOOR_SIZE){
+		for (int i = 0; i < MAX_FLOOR_SIZE; i++){
+			if (this->_floor[i]){
+				delete (this->_floor[i]);
+			}
+		}
+		this->_floorIndex = 0;
 	}
 	this->_floor[this->_floorIndex] = this->_inventory[idx];
 	this->_floorIndex++;

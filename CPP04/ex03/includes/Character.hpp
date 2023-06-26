@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 09:51:20 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 10:17:46 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:56:44 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define CHARACTER_HPP
 
 #include "ICharacter.hpp"
+#include <iostream>
 # define MAX_FLOOR_SIZE 100
 
 class Character : public ICharacter

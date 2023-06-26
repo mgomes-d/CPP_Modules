@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/21 12:24:48 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/22 08:05:53 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/22 11:56:57 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define IMATERIASOURCE_HPP
 
 #include "AMateria.hpp"
+#include <iostream>
 
 class AMateria;
 
