@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:51:06 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 09:36:35 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:46:16 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Dog::Dog(const Dog &rhs)
 
 Dog &Dog::operator=(const Dog &rhs)
 {
-	std::cout << "Copy Dog constructor" << std::endl;
+	std::cout << "Copy Dog assignation" << std::endl;
 	if (this != &rhs)
 	{
 		this->_bigbrain = rhs._bigbrain;

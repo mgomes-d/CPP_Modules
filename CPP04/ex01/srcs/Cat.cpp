@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:51:15 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 09:38:06 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:46:13 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Cat::Cat(const Cat &rhs)
 
 Cat &Cat::operator=(const Cat &rhs)
 {
-	std::cout << "Copy Cat constructor" << std::endl;
+	std::cout << "Copy Cat assignation" << std::endl;
 	if (this != &rhs)
 	{
 		this->_bigbrain = rhs._bigbrain;

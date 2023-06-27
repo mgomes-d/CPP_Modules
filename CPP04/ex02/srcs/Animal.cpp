@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/16 11:49:06 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 07:56:10 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:48:09 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Animal::Animal(const Animal &rhs)
 
 Animal &Animal::operator=(const Animal &rhs)
 {
-	std::cout << "Copy Animal constructor" << std::endl;
+	std::cout << "Copy Animal assignation" << std::endl;
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;

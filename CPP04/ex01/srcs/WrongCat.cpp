@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 10:49:48 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 08:17:26 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:46:41 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ WrongCat::WrongCat(const WrongCat &rhs)
 
 WrongCat &WrongCat::operator=(const WrongCat &rhs)
 {
+	std::cout << "WrongCat copy assignation" << std::endl;
 	if (this != &rhs)
 	{
 		this->_type = rhs._type;

@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/20 08:27:17 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/20 09:51:52 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/26 09:48:11 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ Brain::Brain(const Brain &rhs)
 
 Brain	&Brain::operator=(const Brain &rhs)
 {
-	std::cout << "Copy Brain constructor" << std::endl;
+	std::cout << "Copy Brain assignation" << std::endl;
 	if (this != &rhs){
 		for (int i = 0; i < 100; i++){
 			this->_ideas[i] = rhs._ideas[i];
