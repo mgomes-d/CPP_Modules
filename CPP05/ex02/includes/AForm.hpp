@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:50:06 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/28 11:30:30 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:29:36 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ class Form
 		int getGradeExe(void) const;
 		bool getSign(void) const;
 		void beSigned(const Bureaucrat &bureaucrat);
+		void execute(Bureaucrat const & executor) const;
 
 		class GradeTooHighException : public std::exception
 		{

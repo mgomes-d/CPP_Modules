@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 09:48:31 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/28 11:30:16 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/28 11:29:56 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
 Form::Form(void) : _name("Default"), _sign(false), _gradeSign(40), _gradeExe(40)
 {
@@ -69,6 +69,11 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
 		throw Form::GradeTooLowException();
 	}
 	this->_sign = true;
+}
+
+void Form::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() == )
 }
 
 std::ostream &operator<<(std::ostream &out, const Form &form)

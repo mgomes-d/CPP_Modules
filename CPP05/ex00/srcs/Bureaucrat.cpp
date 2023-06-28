@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 08:08:50 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/27 09:47:13 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/28 08:58:22 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ Bureaucrat::~Bureaucrat(void)
 	
 }
 
-void	Bureaucrat::addGrade(void)
+void	Bureaucrat::removeGrade(void)
 {
 	if (this->_grade >= 150)
 	{
@@ -54,7 +54,7 @@ void	Bureaucrat::addGrade(void)
 	this->_grade++;
 }
 
-void	Bureaucrat::removeGrade(void)
+void	Bureaucrat::addGrade(void)
 {
 	if (this->_grade <= 1)
 	{
