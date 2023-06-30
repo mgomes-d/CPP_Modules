@@ -6,11 +6,13 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 08:09:18 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/28 09:12:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/29 11:11:07 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
 #include "Bureaucrat.hpp"
 
 int main()
@@ -19,46 +21,71 @@ int main()
 	{
 		std::cout << "\033[1;32m" << "~~~ TEST 1 ~~~" << "\033[0m" << std::endl;
 		
-		Bureaucrat fluchten("Fluchten", 25);
-		Bureaucrat cortiz("Cortiz", 75);
+		Bureaucrat fluchten("Fluchten", 55);
 
-		Form minishell("minishell", 70, 70);
-		Form webserv("webserv", 20, 20);
+		ShrubberyCreationForm f1("fluchten");
+		RobotomyRequestForm f2("fluchten");
+		PresidentialPardonForm f3("fluchten");
 
-		std::cout << fluchten << std::endl << webserv << std::endl << cortiz << std::endl << minishell << std::endl;
+		std::cout << fluchten << std::endl << f1 << std::endl << f2 << std::endl << f3 << std::endl;
 
-		fluchten.signForm(minishell);
-		fluchten.signForm(webserv);
-		for (int i = 0; i < 6; i++){
-			fluchten.addGrade();
-		}
-		std::cout << fluchten << std::endl;
-		fluchten.signForm(webserv);
+		fluchten.signForm(f1);
+		fluchten.signForm(f2);
+		fluchten.signForm(f3);
 		
+		fluchten.executeForm(f1);
+		fluchten.executeForm(f2);
+		fluchten.executeForm(f3);
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
+	std::cout << std::endl;
 	try
 	{
-		std::cout << "\033[1;35m" << "~~~ TEST 2 ~~~" << "\033[0m" << std::endl;
+		std::cout << "\033[1;32m" << "~~~ TEST 2 ~~~" << "\033[0m" << std::endl;
 		
-		Bureaucrat fluchten("Fluchten", 25);
-		Bureaucrat cortiz("Cortiz", 75);
+		Bureaucrat cortiz("cortiz", 1);
 
-		Form minishell("minishell", 10, 70);
-		Form webserv("webserv", 20, 210);
+		ShrubberyCreationForm f1("cortiz");
+		RobotomyRequestForm f2("cortiz");
+		PresidentialPardonForm f3("cortiz");
 
-		std::cout << fluchten << std::endl << webserv << std::endl << cortiz << std::endl << minishell << std::endl;
+		std::cout << cortiz << std::endl << f1 << std::endl << f2 << std::endl << f3 << std::endl;
 
-		fluchten.signForm(minishell);
-		fluchten.signForm(webserv);
-		for (int i = 0; i < 6; i++){
-			fluchten.addGrade();
-		}
-		fluchten.signForm(webserv);
+		cortiz.signForm(f1);
+		cortiz.signForm(f2);
+		cortiz.signForm(f3);
 		
+		cortiz.executeForm(f1);
+		cortiz.executeForm(f2);
+		cortiz.executeForm(f3);
+	}
+	catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+	try
+	{
+		std::cout << "\033[1;32m" << "~~~ TEST 2 ~~~" << "\033[0m" << std::endl;
+		
+		Bureaucrat cortiz("cortiz", 120);
+
+		ShrubberyCreationForm f1("cortiz");
+		RobotomyRequestForm f2("cortiz");
+		PresidentialPardonForm f3("cortiz");
+
+		std::cout << cortiz << std::endl << f1 << std::endl << f2 << std::endl << f3 << std::endl;
+
+		cortiz.signForm(f1);
+		cortiz.signForm(f2);
+		cortiz.signForm(f3);
+		
+		cortiz.executeForm(f1);
+		cortiz.executeForm(f2);
+		cortiz.executeForm(f3);
 	}
 	catch (std::exception &e)
 	{

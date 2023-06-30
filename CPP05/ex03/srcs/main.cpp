@@ -6,38 +6,28 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 08:09:18 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/29 10:55:08 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/30 08:16:39 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
-#include "Bureaucrat.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "PresidentialPardonForm.hpp"
+#include "Bureaucrat.hpp"
+#include "Intern.hpp"
 
 int main()
 {
 	try
 	{
 		std::cout << "\033[1;32m" << "~~~ TEST 1 ~~~" << "\033[0m" << std::endl;
-		
-		Bureaucrat fluchten("Fluchten", 25);
-		Bureaucrat cortiz("Cortiz", 75);
+		Intern fluchten;
+		Bureaucrat cortiz("carlos", 2);
+		AForm *f1 = fluchten.makeForm("robotomy request", "cortiz");
 
-		Form minishell("minishell", 70, 70);
-		Form webserv("webserv", 20, 20);
-
-		std::cout << fluchten << std::endl << webserv << std::endl << cortiz << std::endl << minishell << std::endl;
-
-		fluchten.signForm(minishell);
-		fluchten.signForm(webserv);
-		for (int i = 0; i < 6; i++){
-			fluchten.addGrade();
-		}
-		std::cout << fluchten << std::endl;
-		fluchten.signForm(webserv);
-		
+		cortiz.signForm(*f1);
+		cortiz.executeForm(*f1);
+		delete f1;
 	}
 	catch (std::exception &e)
 	{
@@ -45,27 +35,17 @@ int main()
 	}
 	try
 	{
-		std::cout << "\033[1;35m" << "~~~ TEST 2 ~~~" << "\033[0m" << std::endl;
-		
-		Bureaucrat fluchten("Fluchten", 25);
-		Bureaucrat cortiz("Cortiz", 75);
+		std::cout << "\033[1;32m" << "~~~ TEST 2 ~~~" << "\033[0m" << std::endl;
+		Intern fluchten;
+		Bureaucrat cortiz("carlos", 2);
+		AForm *f1 = fluchten.makeForm("hellow", "baadform");
 
-		Form minishell("minishell", 10, 70);
-		Form webserv("webserv", 20, 210);
-
-		std::cout << fluchten << std::endl << webserv << std::endl << cortiz << std::endl << minishell << std::endl;
-
-		fluchten.signForm(minishell);
-		fluchten.signForm(webserv);
-		for (int i = 0; i < 6; i++){
-			fluchten.addGrade();
-		}
-		fluchten.signForm(webserv);
-		
+		cortiz.signForm(*f1);
+		cortiz.executeForm(*f1);
+		delete f1;
 	}
 	catch (std::exception &e)
 	{
 		std::cout << e.what() << std::endl;
 	}
-	return (0);
 }

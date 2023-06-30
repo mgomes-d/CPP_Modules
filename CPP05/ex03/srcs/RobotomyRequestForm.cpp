@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/29 07:46:48 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/30 08:17:37 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/06/30 07:53:40 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    RobotomyRequestForm::execute(Bureaucrat const & executor) const
     if (executor.getGrade() > this->getGradeExe()){
         throw RobotomyRequestForm::GradeTooLowException();
     }
-	
+
 	std::cout << "Drdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdrdr, ";
 	srand(time(0));
 
