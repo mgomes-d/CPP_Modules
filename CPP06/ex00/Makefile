@@ -6,7 +6,7 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/30 08:30:56 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/06/30 08:46:06 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/07/03 08:37:16 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_DIR = includes
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp
+SRCS = main.cpp ScalarConverter.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}
