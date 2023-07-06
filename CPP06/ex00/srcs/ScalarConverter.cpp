@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:47:42 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/05 11:48:00 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/06 07:34:16 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void ScalarConverter::convert(std::string param)
 			break ;
 		}
 	}
-	if (foundDotD && foundEnd && isdigit(param[param.length() - 1])){
+	if (foundDotD && foundEnd){
 		return (ScalarConverter::_toDouble(param));
 	}
 	if (param == "-inf" || param == "+inf" || param == "nan"){
@@ -128,7 +128,7 @@ void ScalarConverter::convert(std::string param)
 
 void ScalarConverter::_toChar(std::string param)
 {
-	std::cout << "char: " << param[0] << std::endl;
+	std::cout << "char: '" << param[0] << "'" << std::endl;
 	std::cout << "int: " << static_cast<int>(param[0]) << std::endl;
 	std::cout << "float: " << static_cast<float>(param[0]) << ".0f" << std::endl;
 	std::cout << "double: " << static_cast<double>(param[0]) << ".0" << std::endl;
@@ -183,12 +183,12 @@ void ScalarConverter::_toFloat(std::string param)
 		std::cout << "char: non displayable" << std::endl;
 	}
 	else{
-		std::cout << "char: " << static_cast<char>(nb) << std::endl;
+		std::cout << "char: '" << static_cast<char>(nb) << "'" << std::endl;
 	}
 	std::cout << "int: " << static_cast<int>(nb) << std::endl;
 	std::cout << "float: " << nb;
 	if (static_cast<int>(nb) == nb){
-		std::cout << ".0f";
+		std::cout << ".0f"; 
 	}
 	else{
 		std::cout << "f";
@@ -203,10 +203,9 @@ void ScalarConverter::_toFloat(std::string param)
 
 void ScalarConverter::_toDouble(std::string param)
 {
-	std::cout << "double" << std::endl;
-	if (param == "-inff" || param == "+inff" || param == "nanf"){
+	if (param == "-inf" || param == "+inf" || param == "nan"){
 		std::cout << "char: impossible" << std::endl;
-		std::cout << "int: overflow" << std::endl;
+		std::cout << "int: impossible" << std::endl;
 		std::cout << "float: " << param << "f" << std::endl;
 		std::cout << "double: " << param << std::endl;
 		return ;
@@ -225,7 +224,7 @@ void ScalarConverter::_toDouble(std::string param)
 		std::cout << "char: non displayable" << std::endl;
 	}
 	else{
-		std::cout << "char: " << static_cast<char>(nb) << std::endl;
+		std::cout << "char: '" << static_cast<char>(nb) << "'" << std::endl;
 	}
 	std::cout << "int: " << static_cast<int>(nb) << std::endl;
 	std::cout << "float: " << static_cast<float>(nb);
