@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:16:02 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/06 11:48:18 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/07 08:02:23 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,12 @@
 # define BASE_HPP
 
 #include <iostream>
+#include <cstdlib>
 
 class Base
 {
 	public:
-		virutal ~Base(void);
+		virtual ~Base(void){};
 };
 
 #endif

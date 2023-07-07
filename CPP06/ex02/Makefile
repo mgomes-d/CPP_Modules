@@ -6,7 +6,7 @@
 #    By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/06 11:11:30 by mgomes-d          #+#    #+#              #
-#    Updated: 2023/07/06 11:15:40 by mgomes-d         ###   ########.fr        #
+#    Updated: 2023/07/07 07:45:22 by mgomes-d         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ INC_DIR = includes
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRCS = main.cpp Base.cpp
+SRCS = main.cpp
 OBJS = $(addprefix ${OBJS_DIR}/, ${SRCS:%.cpp=%.o})
 
 all: ${NAME}
