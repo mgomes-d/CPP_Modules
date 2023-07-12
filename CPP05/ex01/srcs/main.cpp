@@ -6,15 +6,12 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 08:09:18 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/06/29 10:55:08 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/11 09:37:34 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
-#include "ShrubberyCreationForm.hpp"
-#include "RobotomyRequestForm.hpp"
-#include "PresidentialPardonForm.hpp"
 
 int main()
 {
