@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:50:19 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/14 12:28:50 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/17 07:40:16 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <list>
 #include <limits>
+#include <ctime>
 
 class Span
 {

@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:50:11 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/14 12:36:20 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/17 09:08:43 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	Span::addNumber(int nb)
 
 void	Span::addNumbers(std::list<int>::const_iterator it,std::list<int>::const_iterator ite)
 {
-	if (this->_list.size() >= this->_N)
+	size_t count = std::distance(it, ite);
+	if (this->_list.size() + count > this->_N)
 		throw Span::MaxOfElementsStore();
 	this->_list.insert(this->_list.end(), it, ite);
 
@@ -69,6 +70,7 @@ unsigned int Span::shortestSpan(void) const
 	std::list<int>::const_iterator ite = this->_list.end();
 	while (it != ite)
 	{
+		// std::cout << smallestRange << "err\n";
 		std::list<int>::const_iterator it2 = it;
 		while (++it2 != ite)
 		{
@@ -76,8 +78,10 @@ unsigned int Span::shortestSpan(void) const
 			{
 				smallestRange = abs(*it - *it2);
 			}
+			if (smallestRange == 0)
+				break ;
 		}
-		it++;
+		++it;
 	}
 	return (smallestRange);
 }
