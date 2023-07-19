@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 08:47:42 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/06 07:34:16 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/19 07:31:28 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void ScalarConverter::convert(std::string param)
 		char c = param[i];
 		if (i == 0 && (c == '+' || c == '-')){
 			i++;
+			c = param[i];
 		}
 		if (!isdigit(c)){
 			break;
@@ -99,6 +100,7 @@ void ScalarConverter::convert(std::string param)
 
 		if (i == 0 && (c == '+' || c == '-')){
 			i++;
+			c = param[i];
 		}
 		if (isdigit(c)){
 			if ((i + 1) == param.length()){
@@ -148,6 +150,7 @@ void ScalarConverter::_toInt(std::string param)
 		std::cout << "int: overflow" << std::endl;
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
+		return ;
 	}
 	if (!isprint(static_cast<char>(nb))){
 		std::cout << "char: non displayable" << std::endl;
@@ -162,7 +165,6 @@ void ScalarConverter::_toInt(std::string param)
 
 void ScalarConverter::_toFloat(std::string param)
 {
-	std::cout << "float" << std::endl;
 	if (param == "-inff" || param == "+inff" || param == "nanf"){
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: overflow" << std::endl;
@@ -178,6 +180,7 @@ void ScalarConverter::_toFloat(std::string param)
 		std::cout << "int: overflow" << std::endl;
 		std::cout << "float: impossible" << std::endl;
 		std::cout << "double: impossible" << std::endl;
+		return ;
 	}
 	if (!isprint(static_cast<char>(nb))){
 		std::cout << "char: non displayable" << std::endl;

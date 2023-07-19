@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 07:56:11 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/11 09:25:23 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:20:35 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ template<typename T>
 class Array
 {
 	private:
-	unsigned int _size;
-	T *_array;
+		unsigned int _size;
+		T *_array;
 	public:
 		Array(void) : _size(0) {};
 		Array(unsigned int n) : _size(n)
@@ -45,6 +45,7 @@ class Array
 					this->_array[i] = rhs._array[i];
 				}
 			}
+			return (*this);
 		};
 		~Array(void)
 		{

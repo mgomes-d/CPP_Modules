@@ -6,44 +6,60 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/11 09:17:18 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/11 09:20:37 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:52:04 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Array.hpp"
+#include <iostream>
+#include <Array.hpp>
 
-template<typename T>
-void printArray(const Array<T>& array)
+#define MAX_VAL 750
+int main(int, char**)
 {
-    std::cout << "Array elements: " << array << std::endl;
-}
-
-int main()
-{
-    // Test du constructeur par défaut
-    Array<int> intArrayDefault;
-    std::cout << "Default Array size: " << intArrayDefault.size() << std::endl;
-
-    // Test du constructeur avec taille spécifiée
-    Array<int> intArray(5);
-    std::cout << "Array size: " << intArray.size() << std::endl;
-
-    // Test de l'opérateur []
-    for (unsigned int i = 0; i < intArray.size(); i++)
+    Array<int> numbers(MAX_VAL);
+    int* mirror = new int[MAX_VAL];
+    srand(time(NULL));
+    for (int i = 0; i < MAX_VAL; i++)
     {
-        intArray[i] = i + 1;
+        const int value = rand();
+        numbers[i] = value;
+        mirror[i] = value;
     }
-    std::cout << "Array elements: " << intArray << std::endl;
+    //SCOPE
+    {
+        Array<int> tmp = numbers;
+        Array<int> test(tmp);
+    }
 
-    // Test de l'exception OutOfBoundsException
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        if (mirror[i] != numbers[i])
+        {
+            std::cerr << "didn't save the same value!!" << std::endl;
+            return 1;
+        }
+    }
     try
     {
-        intArray[10] = 100; // Accès à un index hors limites
+        numbers[-2] = 0;
     }
-    catch (const Array<int>::OutOfBoundsException& e)
+    catch(const std::exception& e)
     {
-        std::cout << "Exception: " << e.what() << std::endl;
+        std::cerr << e.what() << '\n';
+    }
+    try
+    {
+        numbers[MAX_VAL] = 0;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
     }
 
+    for (int i = 0; i < MAX_VAL; i++)
+    {
+        numbers[i] = rand();
+    }
+    delete [] mirror;//
     return 0;
 }
