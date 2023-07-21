@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:23:58 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/20 11:45:08 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/21 12:31:55 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ class BitcoinExchange
 {
 	private:
 		std::string _infile;
-		std::map<std::string, int> inputData;
+		std::map<std::string, double> _DataBase;
 		void	_parseInputLine(const std::string &line);
 		void	_parseInput(void);
-		void	_ParseDate(const std::string &date);
+		int		_ParseDate(const std::string &date);
 		bool	_isDigits(const std::string& str);
 		bool	_isLeapYear(int year);
+		bool	_isDoubleDigit(const std::string &param);
 		bool	_isValidDate(int day, int month, int year);
+		void	_parseDataBase(void);
 		
 	public:
 		BitcoinExchange(void);
@@ -50,6 +52,14 @@ class BitcoinExchange
 				const char *what() const throw()
 				{
 					return (ERROR_MSG_OFILE);
+				}
+		};
+		class DataBaseError : public std::exception
+		{
+			public:
+				const char *what() const throw()
+				{
+					return ("The Database is corrupted");
 				}
 		};
 };
