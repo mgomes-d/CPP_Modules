@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:23:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/21 12:39:52 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:52:41 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,16 @@ BitcoinExchange::BitcoinExchange(const std::string &infile) : _infile(infile)
 
 BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 {
-	(void)other;////////////
+	*this = other;
 }
 
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
-	(void)other;/////////
-	return (*this);////////
+	if (this != &other){
+		this->_infile = other->_infile;
+		this->_DataBase = other->_DataBase;
+	}
+	return (*this);
 }
 
 BitcoinExchange::~BitcoinExchange(void)
@@ -93,8 +96,8 @@ void BitcoinExchange::_parseInput(void)
 			std::string value;
 			iss >> date >> pipe >> value;
 			if (date.compare("date") != 0 || pipe.compare("|") != 0 || value.compare("value") != 0){
-				std::cout << "Error: bad input => " << line << std::endl;
-				break ;
+				std::cout << "Error: bad input of date | value => " << line << std::endl;
+				continue ;
 			}
 		}
 		if (i)
@@ -108,16 +111,50 @@ void	BitcoinExchange::_parseInputLine(const std::string &line)
 	std::istringstream iss(line);
 	std::string date;
 	std::string pipe;
-	std::string value;
+	std::string	valueStr;
 	iss >> date;
 	if (!date.empty()){
 		if (this->_ParseDate(date))
 			return ;
 	}
+	else{
+		return ;
+	}
 	iss >> pipe;
 	if (pipe.compare("|") != 0)
 		throw FileError();
-	iss >> value;
+	iss >> valueStr;
+	if (!iss.eof()){
+		std::cout << "Error: bad input => " << line << std::endl;
+		return ;
+	}
+	if (iss.fail() || !this->_isDoubleDigit(valueStr)){
+		std::cout << "Error: it's not a double." << std::endl;
+		return ;
+	}
+	double value = strtod(valueStr.c_str(), NULL);
+	if (value == HUGE_VAL || value == -HUGE_VAL || errno == ERANGE || value > INT_MAX){
+		std::cout << "Error: too large a number." << std::endl;
+		return ;
+	}
+	if (value < 0){
+		std::cout << "Error: not a positive number." << std::endl;
+		return ;
+	}
+	std::map<std::string, double>::iterator it = this->_DataBase.find(date);
+	if (it != this->_DataBase.end()){
+		std::cout << it->first << " => " << value << " = " << (it->second * value) << std::endl;
+	}
+	else{
+		it = this->_DataBase.lower_bound(date);
+		if (it != this->_DataBase.begin()){
+			--it;
+			std::cout << it->first << " => " << value << " = " << (it->second * value) << std::endl;
+		}
+		else{
+			std::cout << "Error: The date are not in database." << std::endl;
+		}
+	}
 }
 
 int		BitcoinExchange::_ParseDate(const std::string &date)
@@ -136,7 +173,7 @@ int		BitcoinExchange::_ParseDate(const std::string &date)
 		std::cout << "Error: bad input => " << date << std::endl;
 		return(1) ;
 	}
-	dayStr = date.substr(8,2);+
+	dayStr = date.substr(8,2);
 	if (date[10] || !this->_isDigits(dayStr)){
 		std::cout << "Error: bad input => " << date << std::endl;
 		return(1) ;
@@ -168,6 +205,10 @@ bool BitcoinExchange::_isDoubleDigit(const std::string &param)
     bool foundEnd = false;
     for (std::size_t i = 0; i < param.length(); i++){
         char c = param[i];
+		if (i == 0 && (c == '+' || c == '-')){
+			i++;
+			c = param[i];
+		}
         if (isdigit(c)){
             if ((i + 1) == param.length()){
                 foundEnd = true;
