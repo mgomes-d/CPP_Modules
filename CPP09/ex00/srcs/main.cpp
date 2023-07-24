@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:21:00 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/24 11:04:21 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:22:16 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,5 @@ int main(int ac, char **av)
 		std::cout << e.what() << std::endl;
 		return (1);
 	}
+	return (0);
 }
