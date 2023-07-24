@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:23:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/24 10:52:41 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:03:46 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ BitcoinExchange::BitcoinExchange(const BitcoinExchange &other)
 BitcoinExchange &BitcoinExchange::operator=(const BitcoinExchange &other)
 {
 	if (this != &other){
-		this->_infile = other->_infile;
-		this->_DataBase = other->_DataBase;
+		this->_infile = other._infile;
+		this->_DataBase = other._DataBase;
 	}
 	return (*this);
 }
