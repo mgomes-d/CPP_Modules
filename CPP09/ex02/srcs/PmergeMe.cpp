@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:00:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/01 11:52:01 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/02 08:17:28 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,21 +115,53 @@ std::list<int> PmergeMe::_getListPair(int p, int r)
 	return (listed);
 }
 
-void PmergeMe::_InsertionSort(int p, int r)
+void PmergeMe::_InsertionSort(int p, int q)
 {
-	int i = 0;
-	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
-		if (i < p){
-			i++;
-			continue;
-		}
-		int temp = *it;
-		++it;
-		
-	}
+	// int i = 0;
+	// for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
+	// 	if (i < p){
+	// 		i++;
+	// 		continue;
+	// 	}
+	// 	if (i > q)
+	// 		break ;
+	// 	std::list<int>::iterator it2 = it;
+	// 	it2++;
+	// 	int tempVal = *it2;
+	// 	int j = i + 1;
+	// 	while (j > p && *it > tempVal){
+	// 		std::list<int>::iterator it3 = it2;
+	// 		it2--;
+	// 		std::swap(it3, it2);
+	// 		j--;
+	// 	}
+	// 	*it = *it2;
+	// }
+	{
+    int i = 0;
+    std::list<int>::iterator it = this->_unsortedList->begin();
+    std::advance(it, p); // Avance l'itérateur au début de la séquence à trier
+
+    for (; i < q; ++i) {
+        int tempVal = *(std::next(it)); // Récupère la valeur de l'élément suivant
+        std::list<int>::iterator j = it; // j est l'itérateur courant dans la boucle d'insertion
+
+        while (j != this->_unsortedList->begin() && *(std::prev(j)) > tempVal) {
+            // Déplace les éléments plus grands que tempVal vers la droite
+            *j = *(std::prev(j));
+            --j;
+        }
+        *j = tempVal; // Insère tempVal à sa position correcte
+        ++it;
+    }
+}
 }
 
 void PmergeMe::sort(void)
 {
-	this->_fordJohnsonListSort(0, this->_unsortedList->size());
+	this->_fordJohnsonListSort(0, this->_unsortedList->size() - 1);
+	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
+		std::cout << *it << " ";
+	}
+	std::cout << std::endl;
 }
