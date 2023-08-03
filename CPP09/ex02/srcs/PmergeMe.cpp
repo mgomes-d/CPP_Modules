@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:00:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/02 08:17:28 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/03 12:09:07 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@ PmergeMe::PmergeMe(int *inputArray, std::size_t size)
 	this->_sortedList = new std::list<int>();
 	while (len < size)
 	{
-		if (inputArray[len] < 0)
-			throw std::runtime_error("Error");
 		this->_unsortedVector->push_back(inputArray[len]);
 		this->_unsortedList->push_back(inputArray[len]);
 		len++;
 	}
+	if (!len)
+		throw std::runtime_error("Error");
 	std::cout << "Before:  ";
 	len = 0;
 	while (len < size)
@@ -42,126 +42,165 @@ PmergeMe::~PmergeMe(void)
 	delete this->_sortedList;
 }
 
-bool PmergeMe::_compareIntegers(int a, int b)
+void PmergeMe::_fordJohnsonListSort(void) 
 {
-    return a < b;
-}
-
-void PmergeMe::_fordJohnsonListSort(int p, int r) 
-{
-	if (r - p > 5){
-		int q = (p + r) / 2;
-		this->_fordJohnsonListSort(p, q);
-		this->_fordJohnsonListSort(q + 1, r);
-		this->_merge(p, q, r);
-	}
-	else
-		this->_InsertionSort(p, r);
-	
-}
-
-void PmergeMe::_merge(int p, int q, int r)
-{
-	int n1 = q - p + 1;
-	int n2 = r - q;
-	std::list<int>PairA = this->_getListPair(p, q +1);
-	std::list<int>PairB = this->_getListPair(q +1, r +1);
-	int Ai = 0;
-	int Bi = 0;
-	int i = 0;
-
-	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); it++){
-		if (i < (r - p + 1))
-			break;
-		if (Bi == n2){
-			*it = PairA.front();
-			PairA.pop_front();
-			Ai++;
-		}
-		else if (Ai == n1){
-			*it = PairB.front();
-			PairB.pop_front();
-			Bi++;
-		}
-		else if (PairB.front() > PairA.front()){
-			*it = PairA.front();
-			PairA.pop_front();
-			Ai++;
-		}
-		else{
-			*it = PairB.front();
-			PairB.pop_front();
-			Bi++;
-		}
-		i++;
-	}
-}
-
-
-std::list<int> PmergeMe::_getListPair(int p, int r)
-{
-	std::list<int> listed;
-	int i = 0;
-	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
-		if (i < p){
-			i++;
-			continue;
-		}
-		if (i > r)
-			break ;
-		listed.push_back(*it);
-		i++;
-	}
-	return (listed);
-}
-
-void PmergeMe::_InsertionSort(int p, int q)
-{
-	// int i = 0;
-	// for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
-	// 	if (i < p){
-	// 		i++;
-	// 		continue;
-	// 	}
-	// 	if (i > q)
-	// 		break ;
-	// 	std::list<int>::iterator it2 = it;
-	// 	it2++;
-	// 	int tempVal = *it2;
-	// 	int j = i + 1;
-	// 	while (j > p && *it > tempVal){
-	// 		std::list<int>::iterator it3 = it2;
-	// 		it2--;
-	// 		std::swap(it3, it2);
-	// 		j--;
-	// 	}
-	// 	*it = *it2;
-	// }
+	std::list< std::pair<int, int> > pairsList = this->_getPairL();
+	for (std::list< std::pair<int, int> >::iterator it = pairsList.begin(); it != pairsList.end(); ++it)
 	{
-    int i = 0;
-    std::list<int>::iterator it = this->_unsortedList->begin();
-    std::advance(it, p); // Avance l'itérateur au début de la séquence à trier
+		if (compare<int>(it->first, it->second) && it->first != -1){
+			std::swap(it->first, it->second);
+		}
+	}
+	this->_insertionSortPairsL(pairsList);
+	this->_insertionSortL(pairsList);
+}
 
-    for (; i < q; ++i) {
-        int tempVal = *(std::next(it)); // Récupère la valeur de l'élément suivant
-        std::list<int>::iterator j = it; // j est l'itérateur courant dans la boucle d'insertion
-
-        while (j != this->_unsortedList->begin() && *(std::prev(j)) > tempVal) {
-            // Déplace les éléments plus grands que tempVal vers la droite
-            *j = *(std::prev(j));
-            --j;
+void PmergeMe::_insertionSortL(std::list<std::pair<int, int> > &pairsList)
+{
+    for (std::list<std::pair<int, int> >::iterator it = pairsList.begin(); it != pairsList.end(); ++it)
+    {
+        this->_sortedList->push_back(it->second);
+		if (it->first != -1)
+     	   this->_sortedList->push_back(it->first);
+        std::list<int>::iterator j = --this->_sortedList->end();
+        while (j != this->_sortedList->begin())
+        {
+			if (compare<int>(*j, *(--j))){
+            	std::swap(*j, *(++j));
+        	  	--j;
+			}	
         }
-        *j = tempVal; // Insère tempVal à sa position correcte
-        ++it;
     }
 }
+
+void PmergeMe::_insertionSortPairsL(std::list<std::pair<int, int> > &pairsList)
+{
+    for (std::list<std::pair<int, int> >::iterator it = pairsList.begin(); it != pairsList.end(); ++it)
+	{
+        std::list<std::pair<int, int> >::iterator j = it;
+        while (j != pairsList.begin() && j->first != -1 && compare<int>(j->first, (--j)->first))
+		{
+            std::swap(*j, *(++j));
+			--j;
+        }
+    }
+}
+
+std::list< std::pair<int, int> > PmergeMe::_getPairL(void)
+{
+	std::list< std::pair<int, int> > Pair;
+	bool	first = false;
+	int temp = 0;
+	std::list<int>::iterator ite = this->_unsortedList->end();
+	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != ite; ++it)
+	{
+		if (!first){
+			temp = *it;
+			first = true;
+		} 
+		else{
+			Pair.push_back(std::make_pair(temp, *it));
+			first = false;
+			temp = 0;
+		}
+	}
+	if (first)
+		Pair.push_back(std::make_pair(-1, temp));
+	return (Pair);
 }
 
 void PmergeMe::sort(void)
 {
-	this->_fordJohnsonListSort(0, this->_unsortedList->size() - 1);
-	for (std::list<int>::iterator it = this->_unsortedList->begin(); it != this->_unsortedList->end(); ++it){
+	std::size_t len = this->_unsortedList->size();
+	double before = this->_getMicroseconds();
+	this->_fordJohnsonListSort();
+	double timeList = this->_getMicroseconds() - before;
+	before = this->_getMicroseconds();
+	this->_fordJohnsonVectorSort();
+	double timeVector = this->_getMicroseconds() - before;
+	std::cout << "After: ";
+	for (std::list<int>::iterator it = this->_sortedList->begin(); it != this->_sortedList->end(); ++it){
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
+	std::cout << "Time to process a range of " << len << " elements with std::vector : " << timeVector << " us" << std::endl;
+	std::cout << "Time to process a range of " << len << " elements with std::list : " << timeList << " us" << std::endl;
+}
+
+void PmergeMe::_fordJohnsonVectorSort(void) 
+{
+	std::vector< std::pair<int, int> > pairsvector = this->_getPairV();
+	for (std::vector< std::pair<int, int> >::iterator it = pairsvector.begin(); it != pairsvector.end(); ++it)
+	{
+		if (compare<int>(it->first, it->second) && it->first != -1){
+			std::swap(it->first, it->second);
+		}
+	}
+	this->_insertionSortPairsV(pairsvector);
+	this->_insertionSortV(pairsvector);
+}
+
+void PmergeMe::_insertionSortV(std::vector<std::pair<int, int> > &pairsvector)
+{
+    for (std::vector<std::pair<int, int> >::iterator it = pairsvector.begin(); it != pairsvector.end(); ++it)
+    {
+        this->_sortedVector->push_back(it->second);
+		if (it->first != -1)
+       		this->_sortedVector->push_back(it->first);
+        std::vector<int>::iterator j = --this->_sortedVector->end();
+        while (j != this->_sortedVector->begin())
+        {
+			if (compare<int>(*j, *(--j))){
+            	std::swap(*j, *(++j));
+        	  	--j;
+			}	
+        }
+    }
+}
+
+void PmergeMe::_insertionSortPairsV(std::vector<std::pair<int, int> > &pairsvector)
+{
+    for (std::vector<std::pair<int, int> >::iterator it = pairsvector.begin(); it != pairsvector.end(); ++it)
+	{
+        std::vector<std::pair<int, int> >::iterator j = it;
+        while (j != pairsvector.begin() && j->first != -1 && compare<int>(j->first, (--j)->first))
+		{
+            std::swap(*j, *(++j));
+			--j;
+        }
+    }
+}
+
+std::vector< std::pair<int, int> > PmergeMe::_getPairV(void)
+{
+	std::vector< std::pair<int, int> > Pair;
+	bool	first = false;
+	int temp = 0;
+	std::vector<int>::iterator ite = this->_unsortedVector->end();
+	for (std::vector<int>::iterator it = this->_unsortedVector->begin(); it != ite; ++it)
+	{
+		if (!first){
+			temp = *it;
+			first = true;
+		} 
+		else{
+			Pair.push_back(std::make_pair(temp, *it));
+			first = false;
+			temp = 0;
+		}
+	}
+	if (first)
+		Pair.push_back(std::make_pair(-1, temp));
+	return (Pair);
+}
+
+double PmergeMe::_getMicroseconds(void)
+{
+    static mach_timebase_info_data_t timebaseInfo;
+    if (timebaseInfo.denom == 0) {
+        mach_timebase_info(&timebaseInfo);
+    }
+    uint64_t currentTime = mach_absolute_time();
+    uint64_t nanoseconds = currentTime * timebaseInfo.numer / timebaseInfo.denom;
+    return static_cast<double>(nanoseconds) / 1000.0;
 }

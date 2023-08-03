@@ -6,24 +6,47 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:11:33 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/02 08:20:21 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/03 11:29:44 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
 
+bool isAllDigits(const std::string& str) {
+    for (std::string::const_iterator it = str.begin(); it != str.end(); ++it) {
+        if (!std::isdigit(*it)) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int *get_input(char **av, int len)
+{
+	int *array = new int[len];
+	for (int i = 0; i < len; i++)
+	{
+		std::string str = static_cast<std::string>(av[i + 1]);
+		if (!isAllDigits(str)){
+			std::cout << "Error" << std::endl;
+			std::exit(1);
+		}
+		std::istringstream iss(str);
+		iss >> array[i];
+		if (iss.fail()){
+			std::cout << "Error" << std::endl;
+			std::exit(1);
+		}
+	}
+	return (array);
+}
+
 int	main(int ac, char **av)
 {
 	(void)ac;
-	int i = 0;
 	std::srand(static_cast<unsigned>(std::time(0)));
 	int len = ac - 1;
-	int	*array = new int[len];
-	while (i < len)
-	{
-		array[i] = atoi(av[i]);
-		i++;
-	}
+	int	*array = get_input(av, len);
 	try{
 		PmergeMe test(array, len);
 		test.sort();	
