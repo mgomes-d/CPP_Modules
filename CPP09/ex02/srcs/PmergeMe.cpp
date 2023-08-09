@@ -6,11 +6,38 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:00:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/03 12:09:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/09 07:49:10 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+
+PmergeMe::PmergeMe(void)
+{
+	this->_unsortedVector = NULL;
+	this->_unsortedList = NULL;
+	this->_sortedVector = NULL;
+	this->_sortedList = NULL;
+}
+
+PmergeMe::PmergeMe(PmergeMe &other)
+{
+	this->_unsortedVector = NULL;
+	this->_unsortedList = NULL;
+	this->_sortedVector = NULL;
+	this->_sortedList = NULL;
+	(void)other;
+}
+
+PmergeMe &PmergeMe::operator=(PmergeMe &other)
+{
+	this->_unsortedVector = NULL;
+	this->_unsortedList = NULL;
+	this->_sortedVector = NULL;
+	this->_sortedList = NULL;
+	(void)other;
+	return (*this);
+}
 
 PmergeMe::PmergeMe(int *inputArray, std::size_t size)
 {
@@ -36,10 +63,14 @@ PmergeMe::PmergeMe(int *inputArray, std::size_t size)
 
 PmergeMe::~PmergeMe(void)
 {
-	delete this->_unsortedVector;
-	delete this->_sortedVector;
-	delete this->_unsortedList;
-	delete this->_sortedList;
+	if (this->_unsortedVector)
+		delete this->_unsortedVector;
+	if (this->_sortedVector)
+		delete this->_sortedVector;
+	if (this->_unsortedList)
+		delete this->_unsortedList;
+	if (this->_sortedList)
+		delete this->_sortedList;
 }
 
 void PmergeMe::_fordJohnsonListSort(void) 
@@ -111,6 +142,8 @@ std::list< std::pair<int, int> > PmergeMe::_getPairL(void)
 
 void PmergeMe::sort(void)
 {
+	if (!this->_unsortedList || !this->_unsortedVector)
+		throw std::runtime_error("Error");
 	std::size_t len = this->_unsortedList->size();
 	double before = this->_getMicroseconds();
 	this->_fordJohnsonListSort();

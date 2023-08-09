@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:50:05 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/17 09:16:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:59:43 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int main() {
 	std::cout << "\033[1;34m" << "ADD A LOT NUMBERS" << "\033[0m" << std::endl;
 	try
 	{	
-		Span aLotNumbers(1000);
+		Span aLotNumbers(10000);
 
 		std::list<int> numbersToAdd;
 		srand(time(NULL));
-		for(int i = 0; i < 1000; i++)
+		for(int i = 0; i < 10000; i++)
 		{
 			int randomNbr = rand() % 100000 + 1;
 			numbersToAdd.push_back(randomNbr);
@@ -80,3 +80,4 @@ int main() {
 		std::cout << e.what() << std::endl;
 	}
 }
+

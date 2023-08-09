@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:55:40 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/08 11:42:12 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/09 07:38:53 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,19 +27,10 @@
 class PmergeMe
 {
 	public:
-		PmergeMe(void) {}
+		PmergeMe(void);
 		PmergeMe(int *inputArray, std::size_t size);
-		PmergeMe( PmergeMe & other )
-		{
-			(void)other;
-		}
-
-		PmergeMe &operator=( PmergeMe & other )
-		{
-			(void)other;
-			return (*this);
-		}
-
+		PmergeMe(PmergeMe &other);
+		PmergeMe &operator=(PmergeMe &other);
 		~PmergeMe(void);
 		void sort(void);
 

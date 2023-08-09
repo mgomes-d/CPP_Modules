@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 07:55:10 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/12 12:02:07 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:47:31 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ class ExceptionNumNotFound : public std::exception
 };
 
 template <typename T>
-void	easyfind(T &list, int num)
+void	easyfind(T &container, int num)
 {
 	typename T::const_iterator it;
-	it = std::find(list.begin(), list.end(), num);
-	if (it == list.end())
+	it = std::find(container.begin(), container.end(), num);
+	if (it == container.end())
 		throw ExceptionNumNotFound();
 	std::cout << "Number: " << *it << std::endl;
 };

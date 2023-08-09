@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:11:33 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/03 11:29:44 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/09 07:49:52 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int ac, char **av)
 	int len = ac - 1;
 	int	*array = get_input(av, len);
 	try{
-		PmergeMe test(array, len);
+		PmergeMe test;
 		test.sort();	
 	}
 	catch (std::exception &e){

@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 09:50:11 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/17 09:08:43 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/04 07:58:50 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ unsigned int Span::shortestSpan(void) const
 	std::list<int>::const_iterator ite = this->_list.end();
 	while (it != ite)
 	{
-		// std::cout << smallestRange << "err\n";
 		std::list<int>::const_iterator it2 = it;
 		while (++it2 != ite)
 		{
