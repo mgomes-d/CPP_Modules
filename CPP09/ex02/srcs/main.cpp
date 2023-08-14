@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:11:33 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/09 07:49:52 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/14 07:51:39 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,14 @@ int *get_input(char **av, int len)
 		std::string str = static_cast<std::string>(av[i + 1]);
 		if (!isAllDigits(str)){
 			std::cout << "Error" << std::endl;
+			delete [] array;
 			std::exit(1);
 		}
 		std::istringstream iss(str);
 		iss >> array[i];
 		if (iss.fail()){
 			std::cout << "Error" << std::endl;
+			delete [] array;
 			std::exit(1);
 		}
 	}
@@ -48,7 +50,7 @@ int	main(int ac, char **av)
 	int len = ac - 1;
 	int	*array = get_input(av, len);
 	try{
-		PmergeMe test;
+		PmergeMe test(array, len);
 		test.sort();	
 	}
 	catch (std::exception &e){

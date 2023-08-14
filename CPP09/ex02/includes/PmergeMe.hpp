@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 10:55:40 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/09 07:38:53 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/14 09:30:25 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@
 
 # include <sstream>
 # include <ctime>
-# include <cstdlib>
-#include <mach/mach_time.h>
 
 class PmergeMe
 {
@@ -50,9 +48,6 @@ class PmergeMe
 		bool _comparePairsV(const std::pair<int, int>& a, const std::pair<int, int>& b);
 		void _insertionSortPairsV(std::vector<std::pair<int, int> >& pairsvector);
 		void _insertionSortV(std::vector<std::pair<int, int> > &pairsvector);
-
-		double _getMicroseconds(void);
-
 };
 
 template<typename T>

@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 10:23:54 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/07/24 11:03:46 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/09 12:19:37 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ void BitcoinExchange::getValue(void)
 {
 	this->_parseDataBase();
 	this->_parseInput();
-	
 }
 
 void BitcoinExchange::_parseDataBase(void)

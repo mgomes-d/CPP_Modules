@@ -6,7 +6,7 @@
 /*   By: mgomes-d <mgomes-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/25 11:00:34 by mgomes-d          #+#    #+#             */
-/*   Updated: 2023/08/09 07:49:10 by mgomes-d         ###   ########.fr       */
+/*   Updated: 2023/08/14 09:31:12 by mgomes-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,19 +145,21 @@ void PmergeMe::sort(void)
 	if (!this->_unsortedList || !this->_unsortedVector)
 		throw std::runtime_error("Error");
 	std::size_t len = this->_unsortedList->size();
-	double before = this->_getMicroseconds();
+	std::clock_t startTime = std::clock();
 	this->_fordJohnsonListSort();
-	double timeList = this->_getMicroseconds() - before;
-	before = this->_getMicroseconds();
+	std::clock_t endTime = std::clock();
+	double timeList = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC * 1000;
+	startTime = std::clock();
 	this->_fordJohnsonVectorSort();
-	double timeVector = this->_getMicroseconds() - before;
+	endTime = std::clock();
+	double timeVector = static_cast<double>(endTime - startTime) / CLOCKS_PER_SEC * 1000;
 	std::cout << "After: ";
 	for (std::list<int>::iterator it = this->_sortedList->begin(); it != this->_sortedList->end(); ++it){
 		std::cout << *it << " ";
 	}
 	std::cout << std::endl;
-	std::cout << "Time to process a range of " << len << " elements with std::vector : " << timeVector << " us" << std::endl;
-	std::cout << "Time to process a range of " << len << " elements with std::list : " << timeList << " us" << std::endl;
+	std::cout << "Time to process a range of " << len << " elements with std::vector : " << timeVector << " ms" << std::endl;
+	std::cout << "Time to process a range of " << len << " elements with std::list : " << timeList << " ms" << std::endl;
 }
 
 void PmergeMe::_fordJohnsonVectorSort(void) 
@@ -225,15 +227,4 @@ std::vector< std::pair<int, int> > PmergeMe::_getPairV(void)
 	if (first)
 		Pair.push_back(std::make_pair(-1, temp));
 	return (Pair);
-}
-
-double PmergeMe::_getMicroseconds(void)
-{
-    static mach_timebase_info_data_t timebaseInfo;
-    if (timebaseInfo.denom == 0) {
-        mach_timebase_info(&timebaseInfo);
-    }
-    uint64_t currentTime = mach_absolute_time();
-    uint64_t nanoseconds = currentTime * timebaseInfo.numer / timebaseInfo.denom;
-    return static_cast<double>(nanoseconds) / 1000.0;
 }
